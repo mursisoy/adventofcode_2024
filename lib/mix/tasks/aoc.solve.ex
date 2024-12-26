@@ -25,4 +25,23 @@ defmodule Mix.Tasks.Aoc.Solve do
     similarity = Day1.similarity_score(lists)
     IO.puts("The simliarity score is #{similarity}")
   end
+
+  defp do_run(day: day) when day == 2 do
+    reports =
+      day
+      |> input_file_stream()
+      |> Day2.reports_from_input_stream()
+
+    count =
+      reports
+      |> Day2.count_safe_reports()
+
+    IO.puts("Safe reports: #{count}")
+
+    count =
+      reports
+      |> Day2.count_safe_reports(with_dampener: true)
+
+    IO.puts("Dampened safe reports: #{count}")
+  end
 end

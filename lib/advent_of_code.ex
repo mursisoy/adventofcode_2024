@@ -10,6 +10,7 @@ defmodule AdventOfCode do
     |> File.stream!()
   end
 
+  @spec line_to_numbers(String.t()) :: [integer()]
   def line_to_numbers(line) do
     line
     |> String.split()
