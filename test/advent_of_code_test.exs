@@ -17,7 +17,7 @@ defmodule AdventOfCodeTest do
     ]
   end
 
-  describe "Tests for day 1: " do
+  describe "day 1" do
     @describetag day: 1
     setup [:day1]
 
@@ -55,7 +55,7 @@ defmodule AdventOfCodeTest do
     ]
   end
 
-  describe "Tests for day 2: " do
+  describe "day 2" do
     @describetag day: 2
     setup [:day2]
 
