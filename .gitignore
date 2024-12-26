@@ -24,3 +24,9 @@ advent_of_code-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Input data
+/inputs/day/*/
+
+# Local config
+/config/*.local.exs
