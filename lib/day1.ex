@@ -3,6 +3,20 @@ defmodule Day1 do
   Solves: https://adventofcode.com/2024/day/1
   """
 
+  import AdventOfCode
+
+  @spec lists_from_input_stream(Enumerable.t()) :: {list(), list()}
+  @doc """
+  Parses a stream of two columns of numbers into two lists
+  """
+  def lists_from_input_stream(input) do
+    input
+    |> Stream.map(&line_to_numbers/1)
+    |> Stream.map(&List.to_tuple/1)
+    |> Enum.to_list()
+    |> Enum.unzip()
+  end
+
   @spec total_distance({[non_neg_integer()], [non_neg_integer()]}) :: non_neg_integer()
   @doc """
   From two lists, sort them, zip them and calculate tuple absolute distances, then sum.

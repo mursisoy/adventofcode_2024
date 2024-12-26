@@ -3,16 +3,16 @@ defmodule AdventOfCode do
   Documentation for `AdventOfCode`.
   """
 
-  @doc """
-  Hello world.
+  @inputs_dir Application.compile_env(:advent_of_code, :inputs_dir, "./inputs/day")
 
-  ## Examples
+  def input_file_stream(day) do
+    "#{@inputs_dir}/#{day}/input"
+    |> File.stream!()
+  end
 
-      iex> AdventOfCode.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def line_to_numbers(line) do
+    line
+    |> String.split()
+    |> Enum.map(&String.to_integer/1)
   end
 end

@@ -1,4 +1,7 @@
 defmodule Mix.Tasks.Aoc.Download do
+  @moduledoc """
+  Mix task to download Advent of Code inputs
+  """
   use Mix.Task
 
   @input_url "https://adventofcode.com/2024/day"
@@ -11,6 +14,7 @@ defmodule Mix.Tasks.Aoc.Download do
     do_download_input(parsed)
   end
 
+  @spec do_download_input([{:day, non_neg_integer()}]) :: :ok
   def do_download_input(day: day) do
     session = Application.get_env(:advent_of_code, :session, "")
     HTTPoison.start()
