@@ -44,4 +44,20 @@ defmodule Mix.Tasks.Aoc.Solve do
 
     IO.puts("Dampened safe reports: #{count}")
   end
+
+  defp do_run(day: day) when day == 3 do
+    sum =
+      day
+      |> input_file_read!()
+      |> Day3.clean_mul_sum()
+
+    IO.puts("The sum is #{sum}")
+
+    accurate_sum =
+      day
+      |> input_file_read!()
+      |> Day3.accurate_mul_sum()
+
+    IO.puts("The accurate sum is #{accurate_sum}")
+  end
 end

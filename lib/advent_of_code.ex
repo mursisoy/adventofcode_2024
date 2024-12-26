@@ -5,6 +5,11 @@ defmodule AdventOfCode do
 
   @inputs_dir Application.compile_env(:advent_of_code, :inputs_dir, "./inputs/day")
 
+
+  def input_file_read!(day) do
+    "#{@inputs_dir}/#{day}/input"
+    |> File.read!()
+  end
   def input_file_stream(day) do
     "#{@inputs_dir}/#{day}/input"
     |> File.stream!()
