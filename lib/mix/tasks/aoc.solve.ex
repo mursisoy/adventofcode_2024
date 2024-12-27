@@ -60,4 +60,18 @@ defmodule Mix.Tasks.Aoc.Solve do
 
     IO.puts("The accurate sum is #{accurate_sum}")
   end
+
+  defp do_run(day: day) when day == 4 do
+    input =
+      day
+      |> input_file_stream()
+
+    input
+    |> Day4.search_word("XMAS")
+    |> then(&IO.puts("XMAS Count: #{&1}"))
+
+    input
+    |> Day4.search_cross_word("MAS")
+    |> then(&IO.puts("X-MAS Count: #{&1}"))
+  end
 end
