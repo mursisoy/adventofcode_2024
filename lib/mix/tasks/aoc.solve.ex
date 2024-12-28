@@ -74,4 +74,26 @@ defmodule Mix.Tasks.Aoc.Solve do
     |> Day4.search_cross_word("MAS")
     |> then(&IO.puts("X-MAS Count: #{&1}"))
   end
+
+  defp do_run(day: day) when day == 5 do
+    {rules, updates} =
+      day
+      |> input_file_read!()
+      |> Day5.parse()
+
+    sum_updates =
+      updates
+      |> Stream.filter(&Day5.update_correct?(&1, rules))
+      |> Day5.sum_middle_pages()
+
+    IO.puts("Correct middle page sum: #{sum_updates}")
+
+    sum_fixed_updates =
+      updates
+      |> Stream.reject(&Day5.update_correct?(&1, rules))
+      |> Stream.map(&Day5.maybe_fix_update(&1, rules))
+      |> Day5.sum_middle_pages()
+
+    IO.puts("Fixed middle page sum: #{sum_fixed_updates}")
+  end
 end
