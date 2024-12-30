@@ -96,4 +96,23 @@ defmodule Mix.Tasks.Aoc.Solve do
 
     IO.puts("Fixed middle page sum: #{sum_fixed_updates}")
   end
+
+  defp do_run(day: day) when day == 6 do
+    {_, %Day6{path: path}} =
+      day
+      |> input_file_stream()
+      |> Day6.init(130)
+      |> Day6.calculate_guard_route()
+
+    IO.puts("Guard positions: #{Day6.count_positions(path)}")
+
+    loop_obstructions =
+      day
+      |> input_file_stream()
+      |> Day6.init(130)
+      |> Day6.find_loop_obstructions()
+      |> length()
+
+    IO.puts("Loop obstructions: #{loop_obstructions}")
+  end
 end
